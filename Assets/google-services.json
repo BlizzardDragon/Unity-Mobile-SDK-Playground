@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1007022365542",
+    "project_id": "unity-mobile-sdk-playground",
+    "storage_bucket": "unity-mobile-sdk-playground.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1007022365542:android:c0f3f60c456410421906a7",
+        "android_client_info": {
+          "package_name": "com.danielpitetsky.unitymobilesdkplayground"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAFKMZQx_II4j-LKSy9T-YjM_yy0waSFTg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

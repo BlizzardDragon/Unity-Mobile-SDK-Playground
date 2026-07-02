@@ -104,3 +104,10 @@ InitTestScene*.unity*
 
 # Auto-generated cache in Assets folder
 /[Aa]ssets/[Ss]ceneDependencyCache*
+
+# Unity Firebase (если используешь packages, а не raw plugins)
+Assets/Firebase/Plugins/
+
+# OS
+.DS_Store
+Thumbs.db
