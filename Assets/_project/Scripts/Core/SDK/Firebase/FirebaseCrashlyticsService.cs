@@ -16,7 +16,6 @@ namespace _project.Scripts.Core.SDK.Firebase
         
         // public void TestCrash()
         // {
-        //     // Это мгновенно положит нативный процесс приложения на Android
         //     UnityEngine.Diagnostics.Utils.ForceCrash(UnityEngine.Diagnostics.ForcedCrashCategory.AccessViolation);
         // }
     }

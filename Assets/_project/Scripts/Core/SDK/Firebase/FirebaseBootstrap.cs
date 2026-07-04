@@ -13,7 +13,7 @@ namespace _project.Scripts.Core.SDK.Firebase
 
             Debug.Log($"Firebase: {(isReady ? "READY" : "FAILED")}");
 
-            SDKCoordinator.ReportState("Firebase", isReady);
+            SDKStatusCoordinator.ReportState(SDKTypes.Firebase, isReady);
         }
     }
 }

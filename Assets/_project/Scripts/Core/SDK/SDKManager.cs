@@ -1,55 +1,89 @@
-using System.Collections.Generic;
+using _project.Scripts.Core.SDK.AppsFlyer;
+using _project.Scripts.Core.SDK.Firebase;
 using UnityEngine;
-using _project.Scripts.Core.SDK;
 
-namespace _project.Scripts.Core
+namespace _project.Scripts.Core.SDK
 {
     public class SDKManager : MonoBehaviour
     {
-        public static SDKManager Instance { get; private set; }
+        [SerializeField] private FirebaseService _firebaseService;
+        [SerializeField] private AppsFlyerService _appsFlyerService;
+        
+        #region Firebase
 
-        public SDKStatus Status { get; private set; }
-
-        public static event System.Action<SDKStatus> OnStatusChanged;
-
-        private Dictionary<string, bool> _states = new();
-
-        private void Awake()
+        public void OnFirebaseLevelStart()
         {
-            if (Instance != null)
-            {
-                Destroy(gameObject);
-                return;
-            }
-
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-
-            SDKCoordinator.OnSDKStateChanged += OnSDKStateChanged;
+            _firebaseService.Analytics.LogLevelStart("level_1");
         }
 
-        private void OnDestroy()
+        public void OnFirebasePurchase()
         {
-            SDKCoordinator.OnSDKStateChanged -= OnSDKStateChanged;
+            _firebaseService.Analytics.LogPurchase("sword", 1.99f);
         }
 
-        private void OnSDKStateChanged(string sdk, bool isReady)
+        public void OnFirebaseCrash()
         {
-            _states[sdk] = isReady;
-
-            Status = new SDKStatus
-            {
-                Firebase = Get("Firebase"),
-                AppsFlyer = Get("AppsFlyer"),
-                Ads = Get("Ads")
-            };
-
-            OnStatusChanged?.Invoke(Status);
+            _firebaseService.Crashlytics.TestCrash();
         }
 
-        private bool Get(string key)
+        public async void OnFetchRemoteConfig()
         {
-            return _states.TryGetValue(key, out var value) && value;
+            await _firebaseService.RemoteConfig.Fetch();
         }
+
+        public void OnShowRemoteConfig()
+        {
+            var value = _firebaseService.RemoteConfig.GetString("enemy_hp", "not set");
+            Debug.Log($"Enemy HP: {value}");
+        }
+
+        #endregion
+
+        #region AppsFlyer
+
+        public void OnAppsFlyerLogin()
+        {
+            _appsFlyerService.Analytics.LogLogin();
+        }
+
+        public void OnAppsFlyerPurchase()
+        {
+            _appsFlyerService.Analytics.LogPurchase("sword", 1.99f, "USD");
+        }
+
+        public void OnAppsFlyerLevelComplete()
+        {
+            _appsFlyerService.Analytics.LogLevelComplete("level_1");
+        }
+
+        #endregion
+
+        #region Google Mobile Ads
+
+        // Раскомментировать после подключения Google Mobile Ads.
+
+        /*
+        public void OnShowBanner()
+        {
+            AdsManager.Ads.ShowBanner();
+        }
+
+        public void OnHideBanner()
+        {
+            AdsManager.Ads.HideBanner();
+        }
+
+        public void OnShowInterstitial()
+        {
+            AdsManager.Ads.ShowInterstitial();
+        }
+
+        public void OnShowRewarded()
+        {
+            AdsManager.Ads.ShowRewarded();
+        }
+        */
+
+        #endregion
     }
 }
