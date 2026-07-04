@@ -1,4 +1,4 @@
-namespace _project.Scripts.Services.Firebase
+namespace _project.Scripts.Core.SDK.Firebase
 {
     public class FirebaseFacade
     {

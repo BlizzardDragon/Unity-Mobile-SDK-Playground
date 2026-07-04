@@ -1,7 +1,6 @@
-using _project.Scripts.Services.Firebase;
 using UnityEngine;
 
-namespace _project.Scripts.Core
+namespace _project.Scripts.Core.SDK.Firebase
 {
     public class FirebaseManager : MonoBehaviour
     {
