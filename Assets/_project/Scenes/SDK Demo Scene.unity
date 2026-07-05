@@ -297,8 +297,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2872f250bc148f9b08046ad81afff63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_project.Scripts.Core.SDK.AppsFlyer.AppsFlyerService
-  devKey: DEV_KEY
-  appId: APP_ID
+  devKey: ARdweUWnC2UDUMNjbvuiUE
+  appId: com.danielpitetsky.unitymobilesdkplayground
 --- !u!114 &123439693
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1320,7 +1320,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bac1dbae6e434ad7b9a4d2cc550537e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_project.Scripts.UI.SDKStatusViewPresenter
-  _statusService: {fileID: 0}
+  _statusService: {fileID: 1448736159}
   _statusView: {fileID: 454652288}
 --- !u!114 &454652288
 MonoBehaviour:
@@ -5349,7 +5349,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 150
+    m_Left: 50
     m_Right: 0
     m_Top: 0
     m_Bottom: 0
