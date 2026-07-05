@@ -7,6 +7,8 @@ namespace _project.Scripts.Core.SDK.Ads
 {
     public class AdsService : MonoBehaviour
     {
+        [SerializeField] private List<string> _testDeviceIds;
+
         public BannerAdService Banner { get; }
         public InterstitialAdService Interstitial { get; }
         public RewardedAdService Rewarded { get; }
@@ -22,10 +24,7 @@ namespace _project.Scripts.Core.SDK.Ads
         {
             var requestConfig = new RequestConfiguration
             {
-                TestDeviceIds = new List<string>
-                {
-                    "E459B4FF1D81AC6F930D04373E204480"
-                }
+                TestDeviceIds = _testDeviceIds
             };
 
             MobileAds.SetRequestConfiguration(requestConfig);

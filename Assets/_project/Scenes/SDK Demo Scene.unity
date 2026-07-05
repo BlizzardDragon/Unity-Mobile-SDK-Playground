@@ -324,6 +324,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e28b5fd028984600aa06daf11b3bb6f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_project.Scripts.Core.SDK.Ads.AdsService
+  _testDeviceIds:
+  - E459B4FF1D81AC6F930D04373E204480
 --- !u!1 &129253393
 GameObject:
   m_ObjectHideFlags: 0
