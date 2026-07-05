@@ -1,11 +1,12 @@
+using _project.Scripts.Core.SDK.Statuses;
 using Firebase;
 using UnityEngine;
 
 namespace _project.Scripts.Core.SDK.Firebase
 {
-    public class FirebaseBootstrap : MonoBehaviour
+    public class FirebaseBootstrap
     {
-        private async void Awake()
+        public async void Initialize()
         {
             var status = await FirebaseApp.CheckAndFixDependenciesAsync();
 

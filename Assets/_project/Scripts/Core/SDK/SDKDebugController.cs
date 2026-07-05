@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace _project.Scripts.Core.SDK
 {
-    public class SDKManager : MonoBehaviour
+    public class SDKDebugController : MonoBehaviour
     {
         [SerializeField] private FirebaseService _firebaseService;
         [SerializeField] private AppsFlyerService _appsFlyerService;

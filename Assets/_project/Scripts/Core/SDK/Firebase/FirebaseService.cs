@@ -4,11 +4,11 @@ namespace _project.Scripts.Core.SDK.Firebase
 {
     public class FirebaseService : MonoBehaviour
     {
-        public FirebaseAnalyticsService Analytics { get; private set; }
-        public FirebaseCrashlyticsService Crashlytics { get; private set; }
-        public FirebaseRemoteConfigService RemoteConfig { get; private set; }
+        public FirebaseAnalyticsService Analytics { get; }
+        public FirebaseCrashlyticsService Crashlytics { get; }
+        public FirebaseRemoteConfigService RemoteConfig { get; }
 
-        private void Awake()
+        public FirebaseService()
         {
             Analytics = new FirebaseAnalyticsService();
             Crashlytics = new FirebaseCrashlyticsService();

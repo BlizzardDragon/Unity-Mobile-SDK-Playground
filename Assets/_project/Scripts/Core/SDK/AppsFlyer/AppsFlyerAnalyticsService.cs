@@ -2,11 +2,11 @@ using System.Collections.Generic;
 
 namespace _project.Scripts.Core.SDK.AppsFlyer
 {
-    public class AppsFlyerAnalytics
+    public class AppsFlyerAnalyticsService
     {
         public void LogLogin()
         {
-            AppsFlyerCore.SendEvent("login", new Dictionary<string, string>
+            AppsFlyerSDK.AppsFlyer.sendEvent("login", new Dictionary<string, string>
             {
                 {"method", "debug"}
             });
@@ -14,7 +14,7 @@ namespace _project.Scripts.Core.SDK.AppsFlyer
 
         public void LogPurchase(string item, float price, string currency = "USD")
         {
-            AppsFlyerCore.SendEvent("purchase", new Dictionary<string, string>
+            AppsFlyerSDK.AppsFlyer.sendEvent("purchase", new Dictionary<string, string>
             {
                 {"item", item},
                 {"price", price.ToString()},
@@ -22,11 +22,11 @@ namespace _project.Scripts.Core.SDK.AppsFlyer
             });
         }
 
-        public void LogLevelComplete(string levelId)
+        public void LogLevelComplete(string level)
         {
-            AppsFlyerCore.SendEvent("level_complete", new Dictionary<string, string>
+            AppsFlyerSDK.AppsFlyer.sendEvent("level_complete", new Dictionary<string, string>
             {
-                {"level", levelId}
+                {"level", level}
             });
         }
     }

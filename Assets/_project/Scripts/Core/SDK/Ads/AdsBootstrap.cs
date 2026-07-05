@@ -1,19 +1,24 @@
-using UnityEngine;
+using _project.Scripts.Core.SDK.Statuses;
 
 namespace _project.Scripts.Core.SDK.Ads
 {
-    public class AdsBootstrap : MonoBehaviour
+    public class AdsBootstrap
     {
-        [SerializeField] private AdsService _adsService;
+        private readonly AdsService _adsService;
 
-        private void Awake()
+        public AdsBootstrap(AdsService adsService)
         {
-            var dispatcher = UnityMainThreadDispatcher.Instance;
+            _adsService = adsService;
+        }
 
-            AdsCore.Initialize(_ =>
+        public void Initialize()
+        {
+            _ = UnityMainThreadDispatcher.Instance;
+
+            _adsService.Initialize(() =>
             {
-                SDKStatusCoordinator.ReportState(SDKTypes.Ads, true);
                 _adsService.LoadAllAds();
+                SDKStatusCoordinator.ReportState(SDKTypes.Ads, true);
             });
         }
     }

@@ -1,10 +1,9 @@
 using System;
 using System.Collections.Generic;
-using UnityEngine;
 
-namespace _project.Scripts.Core.SDK
+namespace _project.Scripts.Core.SDK.Statuses
 {
-    public class SDKStatusService : MonoBehaviour
+    public class SDKStatusService : IDisposable
     {
         private readonly Dictionary<SDKTypes, bool> _statuses = new();
         
@@ -12,12 +11,12 @@ namespace _project.Scripts.Core.SDK
         
         public event Action<SDKStatus> OnStatusChanged;
         
-        private void Awake()
+        public void Initialize()
         {
             SDKStatusCoordinator.OnSDKStateChanged += OnSDKStateChanged;
         }
 
-        private void OnDestroy()
+        public void Dispose()
         {
             SDKStatusCoordinator.OnSDKStateChanged -= OnSDKStateChanged;
         }

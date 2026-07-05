@@ -1,4 +1,4 @@
-using System;
+using System.Collections.Generic;
 using AppsFlyerSDK;
 using UnityEngine;
 
@@ -7,50 +7,44 @@ namespace _project.Scripts.Core.SDK.AppsFlyer
     public class AppsFlyerService : MonoBehaviour, IAppsFlyerConversionData
     {
         [Header("Config")]
-        [SerializeField] private string devKey = "DEV_KEY";
-        [SerializeField] private string appId = "APP_ID";
+        [SerializeField] private string devKey;
+        [SerializeField] private string appId;
 
-        public AppsFlyerAnalytics Analytics { get; private set; }
+        public AppsFlyerAnalyticsService Analytics { get; }
 
-        private bool _isInitialized;
-
-        private void Start()
+        public AppsFlyerService()
         {
-            Analytics = new AppsFlyerAnalytics();
-            Init();
+            Analytics = new AppsFlyerAnalyticsService();
         }
 
-        private void Init()
+        public void Initialize()
         {
-            AppsFlyerCore.Init(devKey, appId, this);
-
-            _isInitialized = true;
+            AppsFlyerSDK.AppsFlyer.initSDK(devKey, appId, this);
+            AppsFlyerSDK.AppsFlyer.startSDK();
 
             Debug.Log("AppsFlyer initialized");
-
-            SDKStatusCoordinator.ReportState(SDKTypes.AppsFlyer, true);
         }
 
-        // -------- CALLBACKS --------
+        // ---------------- Callbacks ----------------
 
         public void onConversionDataSuccess(string conversionData)
         {
-            Debug.Log("AppsFlyer conversion data received: " + conversionData);
+            Debug.Log(conversionData);
         }
 
         public void onConversionDataFail(string error)
         {
-            Debug.LogError($"AppsFlyer conversion failed: {error}");
+            Debug.LogError(error);
         }
 
         public void onAppOpenAttribution(string attributionData)
         {
-            Debug.Log("App open attribution: " + attributionData);
+            Debug.Log(attributionData);
         }
 
         public void onAppOpenAttributionFailure(string error)
         {
-            Debug.LogError($"App open attribution failed: {error}");
+            Debug.LogError(error);
         }
     }
 }

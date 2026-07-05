@@ -1,4 +1,4 @@
-namespace _project.Scripts.Core.SDK
+namespace _project.Scripts.Core.SDK.Statuses
 {
     public struct SDKStatus
     {

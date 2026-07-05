@@ -1,6 +1,6 @@
 using System;
 
-namespace _project.Scripts.Core.SDK
+namespace _project.Scripts.Core.SDK.Statuses
 {
     public static class SDKStatusCoordinator
     {
