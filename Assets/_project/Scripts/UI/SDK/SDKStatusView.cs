@@ -14,11 +14,19 @@ namespace _project.Scripts.UI.SDK
 
         public void Refresh(SDKStatus status)
         {
-            _firebaseStatus.text = status.Firebase ? "Firebase: READY" : "Firebase: OFF";
-            _appsFlyerStatus.text = status.AppsFlyer ? "AppsFlyer: READY" : "AppsFlyer: OFF";
-            _adsStatus.text = status.Ads ? "Ads: READY" : "Ads: OFF";
+            SetStatusText(_firebaseStatus, "Firebase", status.Firebase);
+            SetStatusText(_appsFlyerStatus, "AppsFlyer", status.AppsFlyer);
+            SetStatusText(_adsStatus, "Ads", status.Ads);
 
             _globalStatus.text = status.AllReady ? "ALL SYSTEMS READY" : "INITIALIZING...";
+            _globalStatus.color = status.AllReady ? Color.green : Color.red;
+        }
+
+        private void SetStatusText(TMP_Text textComponent, string label, bool isReady)
+        {
+            string statusColor = isReady ? "green" : "red";
+            string statusText = isReady ? "READY" : "OFF";
+            textComponent.text = $"<color=#FFFFFF>{label}:</color> <color={statusColor}>{statusText}</color>";
         }
     }
 }

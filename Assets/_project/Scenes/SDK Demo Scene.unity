@@ -263,6 +263,7 @@ GameObject:
   - component: {fileID: 123439691}
   - component: {fileID: 123439693}
   - component: {fileID: 123439692}
+  - component: {fileID: 123439694}
   m_Layer: 0
   m_Name: Services
   m_TagString: Untagged
@@ -311,6 +312,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c18005aaae04a8ba44eb5ab45f106f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_project.Scripts.Core.SDK.Firebase.FirebaseService
+--- !u!114 &123439694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 123439690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e28b5fd028984600aa06daf11b3bb6f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_project.Scripts.Core.SDK.Ads.AdsService
 --- !u!1 &129253393
 GameObject:
   m_ObjectHideFlags: 0
@@ -526,7 +539,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 186994242}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 531790989}
+        m_TargetAssemblyTypeName: _project.Scripts.Core.SDK.SDKManager, Assembly-CSharp
+        m_MethodName: OnShowInterstitial
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &186994242
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1297,7 +1322,7 @@ MonoBehaviour:
   m_Padding:
     m_Left: 0
     m_Right: 0
-    m_Top: 50
+    m_Top: 140
     m_Bottom: 0
   m_ChildAlignment: 2
   m_Spacing: 0
@@ -1371,6 +1396,7 @@ Transform:
   - {fileID: 740753277}
   - {fileID: 123439691}
   - {fileID: 1448736158}
+  - {fileID: 1087152395}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &531790989
@@ -1387,6 +1413,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _firebaseService: {fileID: 123439693}
   _appsFlyerService: {fileID: 123439692}
+  _adsService: {fileID: 123439694}
 --- !u!1 &665967871
 GameObject:
   m_ObjectHideFlags: 0
@@ -1876,7 +1903,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 720152158}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 531790989}
+        m_TargetAssemblyTypeName: _project.Scripts.Core.SDK.SDKManager, Assembly-CSharp
+        m_MethodName: OnShowRewarded
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &720152158
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1925,6 +1964,7 @@ GameObject:
   m_Component:
   - component: {fileID: 740753277}
   - component: {fileID: 740753278}
+  - component: {fileID: 740753279}
   m_Layer: 0
   m_Name: Bootstrap
   m_TagString: Untagged
@@ -1959,6 +1999,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 800fc583c4f84815a76289def67b8622, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &740753279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 740753276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 108ad970700d4e8f8911d967fa56180d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_project.Scripts.Core.SDK.Ads.AdsBootstrap
+  _adsService: {fileID: 123439694}
 --- !u!1 &759554862
 GameObject:
   m_ObjectHideFlags: 0
@@ -2655,6 +2708,50 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &1087152394
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1087152395}
+  - component: {fileID: 1087152396}
+  m_Layer: 0
+  m_Name: UnityMainThreadDispatcher
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1087152395
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1087152394}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 531790987}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1087152396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1087152394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5b2c4217e1f42658e36c33d2e6db165, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UnityMainThreadDispatcher
 --- !u!1 &1089114888
 GameObject:
   m_ObjectHideFlags: 0
@@ -3140,7 +3237,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1171808437}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 531790989}
+        m_TargetAssemblyTypeName: _project.Scripts.Core.SDK.SDKManager, Assembly-CSharp
+        m_MethodName: OnShowBanner
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1171808437
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4837,7 +4946,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1851921908}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 531790989}
+        m_TargetAssemblyTypeName: _project.Scripts.Core.SDK.SDKManager, Assembly-CSharp
+        m_MethodName: OnHideBanner
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1851921908
 MonoBehaviour:
   m_ObjectHideFlags: 0

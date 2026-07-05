@@ -1,3 +1,4 @@
+using _project.Scripts.Core.SDK.Ads;
 using _project.Scripts.Core.SDK.AppsFlyer;
 using _project.Scripts.Core.SDK.Firebase;
 using UnityEngine;
@@ -8,6 +9,7 @@ namespace _project.Scripts.Core.SDK
     {
         [SerializeField] private FirebaseService _firebaseService;
         [SerializeField] private AppsFlyerService _appsFlyerService;
+        [SerializeField] private AdsService _adsService;
         
         #region Firebase
 
@@ -60,29 +62,31 @@ namespace _project.Scripts.Core.SDK
 
         #region Google Mobile Ads
 
-        // Раскомментировать после подключения Google Mobile Ads.
-
-        /*
         public void OnShowBanner()
         {
-            AdsManager.Ads.ShowBanner();
+            _adsService.Banner.Show();
         }
 
         public void OnHideBanner()
         {
-            AdsManager.Ads.HideBanner();
+            _adsService.Banner.Hide();
         }
 
         public void OnShowInterstitial()
         {
-            AdsManager.Ads.ShowInterstitial();
+            _adsService.Interstitial.Show();
         }
 
         public void OnShowRewarded()
         {
-            AdsManager.Ads.ShowRewarded();
+            _adsService.Rewarded.Show((success) =>
+            {
+                if (success)
+                    Debug.Log("Player earned reward!");
+                else
+                    Debug.Log("Reward not earned");
+            });
         }
-        */
 
         #endregion
     }
