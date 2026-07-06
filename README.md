@@ -159,7 +159,7 @@ Assets → External Dependency Manager → Android Resolver → Force Resolve
 ## Решение проблем
 
 ### "No fill" при загрузке рекламы
-- Убедитесь, что ваше устройство добавлено в `TestDeviceIds`
+- Убедитесь, что ваше устройство добавлено в `TestDeviceIds` в `AdsService.cs`
 - Проверьте интернет-соединение
 - Используйте тестовые Ad Unit ID для отладки
 
