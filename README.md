@@ -3,7 +3,7 @@
 [![Unity Version](https://img.shields.io/badge/Unity-6000.5.2f1-000000?logo=unity)](https://unity.com/)
 [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 
-Демонстрационный проект для интеграции и тестирования мобильных SDK в Unity-приложении. Включает работу с аналитикой, рекламой, crash-репортами и remote-конфигами.
+Демонстрационный проект для интеграции и тестирования мобильных SDK в Unity-приложении. Включает работу с аналитикой, рекламой, crash-репортами и remote-конфигами, а также демонстрирует чистую сервисную архитектуру и решение типичных проблем интеграции мобильных SDK.
 
 ## Интегрированные SDK
 
@@ -160,6 +160,36 @@ Assets → External Dependency Manager → Android Resolver → Force Resolve
 - Убедитесь, что ваше устройство добавлено в `TestDeviceIds`
 - Проверьте интернет-соединение
 - Используйте тестовые Ad Unit ID для отладки
+
+### Вызовы Unity API из фонового потока
+- Все методы, обращающиеся к компонентам Unity (GameObject, Transform, TextMeshPro, Debug.Log и др.), должны выполняться в главном потоке.
+- Если вызов происходит из колбэка SDK (например, `MobileAds.Initialize`), используйте `UnityMainThreadDispatcher` для переключения контекста.
+
+### Сборка падает с ошибкой manifest merger
+- Конфликт package name между Android-библиотеками. Добавьте `android.uniquePackageNames=false` в `gradleTemplate.properties`
+
+### Firebase события не отображаются
+- Проверьте, добавлен ли `google-services.json` в `Assets/Plugins/Android/`
+- Убедитесь, что инициализация Firebase завершилась успешно
+- Включите DebugView для просмотра событий в реальном времени:
+
+```bash
+adb shell setprop debug.firebase.analytics.app <package_name>
+```
+
+### Отладка на реальном устройстве через LogCat
+- Используйте Android LogCat для просмотра логов приложения и отслеживания ошибок SDK
+- Подключите устройство к компьютеру и выполните:
+
+```bash
+adb logcat -s Unity ActivityManager AndroidRuntime
+```
+
+- Фильтруйте логи по имени вашего пакета для более точной диагностики:
+
+```bash
+adb logcat | grep "com.yourcompany.yourapp"
+```
 
 ---
 
