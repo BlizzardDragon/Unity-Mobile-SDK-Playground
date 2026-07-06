@@ -11,9 +11,9 @@
 
 | SDK | Назначение | Версия |
 |-----|------------|--------|
-| **Firebase** | Аналитика, Crashlytics, Remote Config | 11.x |
-| **AppsFlyer** | Mobile attribution & analytics | 6.17.6 |
-| **Google AdMob** | Показ рекламы (баннер, интерстишал, rewarded) | 9.x |
+| **Firebase** | Аналитика, Crashlytics, Remote Config | 13.13.0 |
+| **AppsFlyer** | Mobile attribution & analytics | 6.18.1 |
+| **Google AdMob** | Показ рекламы (баннер, интерстишал, rewarded) | 11.2.0 |
 
 > ⚠️ **Важно:** Для тестирования рекламы на реальном устройстве необходимо добавить свой `TestDeviceId` в `AdsService.cs` (строка с `TestDeviceIds`). Текущий ID принадлежит устройству разработчика и не будет работать на других телефонах.
 
